@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassBankLibrary", "PassBankLibrary\PassBankLibrary.csproj", "{913E44A9-3A57-4A9F-B90D-BD49CC817F45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassBankUI", "PassBankUI\PassBankUI.csproj", "{84EC649E-D62F-4176-9529-551561A111CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{913E44A9-3A57-4A9F-B90D-BD49CC817F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{913E44A9-3A57-4A9F-B90D-BD49CC817F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{913E44A9-3A57-4A9F-B90D-BD49CC817F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{913E44A9-3A57-4A9F-B90D-BD49CC817F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EC649E-D62F-4176-9529-551561A111CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EC649E-D62F-4176-9529-551561A111CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EC649E-D62F-4176-9529-551561A111CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EC649E-D62F-4176-9529-551561A111CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0FECF894-A8EA-4E4E-8B8D-D161B9A456F9}
+	EndGlobalSection
+EndGlobal
