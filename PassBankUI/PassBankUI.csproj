@@ -106,5 +106,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PassBankLibrary\PassBankLibrary.csproj">
+      <Project>{c61c2a04-03a2-4f83-aed1-96b4bc36ab4c}</Project>
+      <Name>PassBankLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

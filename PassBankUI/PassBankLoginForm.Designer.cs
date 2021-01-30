@@ -29,6 +29,7 @@ namespace PassBankUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PassBankLoginForm));
             this.masterPasswordLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.masterPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -92,6 +93,7 @@ namespace PassBankUI
             this.Controls.Add(this.masterPasswordLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "PassBankLoginForm";
             this.Text = "PassBankLogin";

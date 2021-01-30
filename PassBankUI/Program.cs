@@ -16,6 +16,10 @@ namespace PassBankUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Initialize the database connections 
+            PassBankLibrary.GlobalConfig.InitializeConnections(true, true);
+
             Application.Run(new AddAccountForm());
         }
     }

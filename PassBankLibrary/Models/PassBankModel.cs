@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace PassBankLibrary
+namespace PassBankLibrary.Models
 {
    public class PassBankModel
     {

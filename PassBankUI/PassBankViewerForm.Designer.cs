@@ -29,6 +29,7 @@ namespace PassBankUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PassBankViewerForm));
             this.listBoxAccountViewer = new System.Windows.Forms.ListBox();
             this.getInfoButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -104,6 +105,7 @@ namespace PassBankUI
             this.Controls.Add(this.getInfoButton);
             this.Controls.Add(this.listBoxAccountViewer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PassBankViewerForm";
             this.Text = "PassBankViewer";
             this.ResumeLayout(false);

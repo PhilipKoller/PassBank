@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PassBankLibrary;
 
 namespace PassBankUI
 {
@@ -21,7 +22,22 @@ namespace PassBankUI
         {
             if (ValidateForm())
             {
+                AccountModel model = new AccountModel();
+                model.AccountName = accountTextBox.Text;
+                model.Username = usernameTextBox.Text;
+                model.Password = passwordTextBox.Text;
+
+                foreach (var db in GlobalConfig.Connections)
+                {
+                    db.AddAccount(model);
+                }
+
+                model.AccountName = "";
+                model.Username = "";
+                model.Password = "";
+
                 MessageBox.Show("Account is Being Added!");
+                
             }
             else
             {
