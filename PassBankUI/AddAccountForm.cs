@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PassBankLibrary;
+using PassBankLibrary.Models;
 
 namespace PassBankUI
 {
@@ -27,10 +28,7 @@ namespace PassBankUI
                 model.Username = usernameTextBox.Text;
                 model.Password = passwordTextBox.Text;
 
-                foreach (var db in GlobalConfig.Connections)
-                {
-                    db.AddAccount(model);
-                }
+                GlobalConfig.Connections.AddAccount(model);
 
                 model.AccountName = "";
                 model.Username = "";

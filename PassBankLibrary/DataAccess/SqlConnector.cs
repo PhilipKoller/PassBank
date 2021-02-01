@@ -1,9 +1,10 @@
-﻿using PassBankLibrary.Models;
+﻿using System.Data;
+using Dapper;
+using PassBankLibrary.Models;
 
 namespace PassBankLibrary.DataAccess
 {
     // Class that will connect to databse 
-    // TODO: Make the AddAccount method actually save to the database
   public  class SqlConnector : IDataConnection
     {
         /// <summary>
@@ -13,8 +14,20 @@ namespace PassBankLibrary.DataAccess
         /// <returns>The account information, including the unique identifier</returns>
         public AccountModel AddAccount(AccountModel model)
         {
-            model.Id = 1;
-            return model;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("PassBank")))
+            {
+                var p = new DynamicParameters();
+                p.Add(@"AccountName", model.AccountName);
+                p.Add(@"UserName", model.Username);
+                p.Add(@"UserPassword", model.Password);
+                p.Add(@"id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spAccounts_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.Id = p.Get<int>("@id");
+       
+                return model;
+            }
         }
     }
 }

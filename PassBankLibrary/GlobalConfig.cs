@@ -1,30 +1,32 @@
 ﻿using PassBankLibrary.DataAccess;
-using System.Collections.Generic;
+using System.Configuration;
 
 namespace PassBankLibrary
 {
   public static class GlobalConfig
     {
-       
+        public static IDataConnection Connections { get; private set; } 
 
-        // This list says I will hold anything that implements IDataConnection
-        public static List<IDataConnection> Connections { get; private set; } = new List<IDataConnection>();
-
-        public static void InitializeConnections(bool database, bool textFiles)
+        public static void InitializeConnections(DatabaseType db)
         {
-            if (database)
+            switch (db)
             {
-                // TODO: Setup the SQL Connector properly
-                SqlConnector Sql = new SqlConnector();
-                Connections.Add(Sql);
+                case DatabaseType.Sql:
+                    SqlConnector Sql = new SqlConnector();
+                    Connections = Sql;
+                    break;
+                case DatabaseType.TextFile:
+                    TextConnector Text = new TextConnector();
+                    Connections = Text;
+                    break;
+                default:
+                    break;
             }
-            if (textFiles)
-            {
-                // TODO: Setup text connection 
-                TextConnector Text = new TextConnector();
-                Connections.Add(Text);
-               
-            }
+        }
+
+        public static string CnnString(string name)
+        {
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
     }
 }
