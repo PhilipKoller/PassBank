@@ -49,6 +49,7 @@ namespace PassBankUI
             if (accountTextBox.Text.Length == 0 || usernameTextBox.Text.Length == 0 || passwordTextBox.Text.Length == 0)
             {
                 isValid = false;
+
             }
 
             return isValid;
