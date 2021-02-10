@@ -129,7 +129,7 @@ namespace PassBankUI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.Name = "AddAccountForm";
-            this.Text = "  ";
+            this.Text = "AddAccountForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 
