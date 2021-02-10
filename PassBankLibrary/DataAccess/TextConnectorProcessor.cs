@@ -3,7 +3,9 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Text;
+using System.Security.Cryptography;
+using System;
 
 namespace PassBankLibrary.DataAccess.TextHelpers
 {
@@ -13,9 +15,10 @@ namespace PassBankLibrary.DataAccess.TextHelpers
     // *Add new record with the new ID ( MAX + 1) 
     // *Convert prizes to list<string>
     // *Save the list<string> to the text file
-  public static class TextConnectorProcessor
+    public static class TextConnectorProcessor
     {
-        public static string FullFilePath(this string fileName )
+        private static string hash = "f0xldfe@rn";
+        public static string FullFilePath(this string fileName)
         {
             return $"{ConfigurationManager.AppSettings["filePath"] }/{fileName}";
         }
@@ -48,12 +51,33 @@ namespace PassBankLibrary.DataAccess.TextHelpers
             return File.ReadAllLines(file).ToList();
         }
 
+
         public static void SaveToAccountFile(this List<AccountModel> models, string fileName)
         {
             List<string> lines = new List<string>();
 
             foreach (AccountModel p in models)
             {
+               
+                if (p.Id == models.Count)
+                {
+                    // Encrypt password
+                    byte[] userBytePass = UTF8Encoding.UTF8.GetBytes(p.Password);
+                    using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+                    {
+
+                        byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                        using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                        {
+                            ICryptoTransform transform = tripleDES.CreateEncryptor();
+                            byte[] results = transform.TransformFinalBlock(userBytePass, 0, userBytePass.Length);
+                            p.Password = Convert.ToBase64String(results, 0, results.Length);
+                        }
+
+                    }
+                }
+
+                
                 lines.Add($"{p.Id},{p.AccountName},{p.Username},{p.Password}");
             }
 

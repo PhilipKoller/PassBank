@@ -49,7 +49,7 @@ namespace PassBankUI
             this.addAccountButton.Location = new System.Drawing.Point(222, 264);
             this.addAccountButton.Name = "addAccountButton";
             this.addAccountButton.Size = new System.Drawing.Size(334, 68);
-            this.addAccountButton.TabIndex = 12;
+            this.addAccountButton.TabIndex = 3;
             this.addAccountButton.Text = "Add Account";
             this.addAccountButton.UseVisualStyleBackColor = true;
             this.addAccountButton.Click += new System.EventHandler(this.addAccountButton_Click);
@@ -61,7 +61,7 @@ namespace PassBankUI
             this.usernameTextBox.Location = new System.Drawing.Point(54, 166);
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(329, 50);
-            this.usernameTextBox.TabIndex = 11;
+            this.usernameTextBox.TabIndex = 1;
             // 
             // usernameLabel
             // 
@@ -80,7 +80,7 @@ namespace PassBankUI
             this.passwordTextBox.Location = new System.Drawing.Point(397, 166);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(329, 50);
-            this.passwordTextBox.TabIndex = 9;
+            this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // passwordLabel
@@ -100,7 +100,7 @@ namespace PassBankUI
             this.accountTextBox.Location = new System.Drawing.Point(225, 50);
             this.accountTextBox.Name = "accountTextBox";
             this.accountTextBox.Size = new System.Drawing.Size(329, 50);
-            this.accountTextBox.TabIndex = 14;
+            this.accountTextBox.TabIndex = 0;
             // 
             // accountLabel
             // 
