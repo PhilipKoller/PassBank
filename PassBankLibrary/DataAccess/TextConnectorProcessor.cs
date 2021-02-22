@@ -50,15 +50,13 @@ namespace PassBankLibrary.DataAccess.TextHelpers
 
             return File.ReadAllLines(file).ToList();
         }
-
-
-        public static void SaveToAccountFile(this List<AccountModel> models, string fileName)
+        public static List<string> Encrypt(this List<AccountModel> models)
         {
             List<string> lines = new List<string>();
 
             foreach (AccountModel p in models)
             {
-               
+
                 if (p.Id == models.Count)
                 {
                     // Encrypt password
@@ -76,12 +74,14 @@ namespace PassBankLibrary.DataAccess.TextHelpers
 
                     }
                 }
-
-                
                 lines.Add($"{p.Id},{p.AccountName},{p.Username},{p.Password}");
             }
+            return lines;
+        }
 
-            File.WriteAllLines(fileName.FullFilePath(), lines);
+        public static void SaveToAccountFile(this List<string> models, string fileName)
+        {
+            File.WriteAllLines(fileName.FullFilePath(), models);
         }
     }
 }

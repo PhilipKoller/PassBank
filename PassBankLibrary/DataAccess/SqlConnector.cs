@@ -29,5 +29,23 @@ namespace PassBankLibrary.DataAccess
                 return model;
             }
         }
+        public UserModel AddUser(UserModel model)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString("PassBank")))
+            {
+                var p = new DynamicParameters();
+                p.Add(@"Username", model.Name);
+                p.Add(@"MasterPassword", model.MasterPassword);
+                p.Add(@"id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute("dbo.spUsers_Insert", p, commandType: CommandType.StoredProcedure);
+
+                model.Id = p.Get<int>("@id");
+
+                return model;
+            }
+        }
+
+       
     }
 }

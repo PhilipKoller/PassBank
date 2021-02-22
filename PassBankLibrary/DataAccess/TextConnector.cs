@@ -25,9 +25,16 @@ namespace PassBankLibrary.DataAccess
             // Add new record with the new ID
             accounts.Add(model);
 
-            accounts.SaveToAccountFile(AccountFile);
+            accounts.Encrypt().SaveToAccountFile(AccountFile);
+
+        
 
             return model;
+        }
+
+        public UserModel AddUser(UserModel model)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

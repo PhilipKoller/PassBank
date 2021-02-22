@@ -18,9 +18,9 @@ namespace PassBankUI
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Initialize the database connections 
-            PassBankLibrary.GlobalConfig.InitializeConnections(PassBankLibrary.DatabaseType.TextFile);
+            PassBankLibrary.GlobalConfig.InitializeConnections(PassBankLibrary.DatabaseType.Sql);
 
-            Application.Run(new AddAccountForm());
+            Application.Run(new CreateMasterPasswordForm());
         }
     }
 }

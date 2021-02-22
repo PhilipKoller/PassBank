@@ -32,7 +32,7 @@ namespace PassBankUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateMasterPasswordForm));
             this.masterPasswordTextBox = new System.Windows.Forms.TextBox();
             this.masterPasswordLabel = new System.Windows.Forms.Label();
-            this.userNameTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.infoLabel = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@ namespace PassBankUI
             this.masterPasswordTextBox.Location = new System.Drawing.Point(389, 74);
             this.masterPasswordTextBox.Name = "masterPasswordTextBox";
             this.masterPasswordTextBox.Size = new System.Drawing.Size(329, 50);
-            this.masterPasswordTextBox.TabIndex = 4;
+            this.masterPasswordTextBox.TabIndex = 1;
             this.masterPasswordTextBox.UseSystemPasswordChar = true;
             // 
             // masterPasswordLabel
@@ -58,14 +58,14 @@ namespace PassBankUI
             this.masterPasswordLabel.TabIndex = 3;
             this.masterPasswordLabel.Text = "Master Password";
             // 
-            // userNameTextBox
+            // usernameTextBox
             // 
-            this.userNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userNameTextBox.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTextBox.Location = new System.Drawing.Point(46, 74);
-            this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(329, 50);
-            this.userNameTextBox.TabIndex = 6;
+            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usernameTextBox.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.Location = new System.Drawing.Point(46, 74);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(329, 50);
+            this.usernameTextBox.TabIndex = 0;
             // 
             // usernameLabel
             // 
@@ -87,9 +87,10 @@ namespace PassBankUI
             this.submitButton.Location = new System.Drawing.Point(218, 152);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(334, 68);
-            this.submitButton.TabIndex = 7;
+            this.submitButton.TabIndex = 2;
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // infoLabel
             // 
@@ -111,7 +112,7 @@ namespace PassBankUI
             this.ClientSize = new System.Drawing.Size(770, 275);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.userNameTextBox);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.masterPasswordTextBox);
             this.Controls.Add(this.masterPasswordLabel);
@@ -130,7 +131,7 @@ namespace PassBankUI
 
         private System.Windows.Forms.TextBox masterPasswordTextBox;
         private System.Windows.Forms.Label masterPasswordLabel;
-        private System.Windows.Forms.TextBox userNameTextBox;
+        private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.Label infoLabel;
