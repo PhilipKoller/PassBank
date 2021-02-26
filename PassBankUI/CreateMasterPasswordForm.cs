@@ -28,6 +28,7 @@ namespace PassBankUI
                 user.MasterPassword = masterPasswordTextBox.Text;
 
                 GlobalConfig.Connections.AddUser(user);
+                MessageBox.Show("User Added!");
             }
             else
             {

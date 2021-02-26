@@ -9,6 +9,7 @@ namespace PassBankLibrary.DataAccess
     {
 
         private const string AccountFile = "AccountModels.csv";
+        private const string UserFile = "UserModels.csv";
         public AccountModel AddAccount(AccountModel model)
         {
             // Load the text file and convert the text to List<AcountModel>
@@ -25,7 +26,7 @@ namespace PassBankLibrary.DataAccess
             // Add new record with the new ID
             accounts.Add(model);
 
-            accounts.Encrypt().SaveToAccountFile(AccountFile);
+            accounts.EncryptAccount().SaveToAccountFile(AccountFile);
 
         
 
@@ -34,7 +35,21 @@ namespace PassBankLibrary.DataAccess
 
         public UserModel AddUser(UserModel model)
         {
-            throw new System.NotImplementedException();
+            List<UserModel> users = UserFile.FullFilePath().LoadFile().ConvertToUserModels();
+
+            int currentId = 1;
+            if (users.Count > 0)
+            {
+                currentId = users.OrderByDescending(x => x.Id).First().Id + 1;
+            }
+            model.Id = currentId;
+
+            users.Add(model);
+
+            users.EncryptUsers().SaveToAccountFile(UserFile);
+
+            return model;
         }
+
     }
 }

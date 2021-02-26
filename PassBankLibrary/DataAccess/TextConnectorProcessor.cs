@@ -41,6 +41,24 @@ namespace PassBankLibrary.DataAccess.TextHelpers
             return output;
         }
 
+        public static List<UserModel> ConvertToUserModels(this List<string> model)
+        {
+            List<UserModel> output = new List<UserModel>();
+
+            foreach (string line in model)
+            {
+                UserModel u = new UserModel();
+                string[] cols = line.Split(',');
+
+                u.Id = Int32.Parse(cols[0]);
+                u.Name = cols[1];
+                u.MasterPassword = cols[2];
+
+                output.Add(u);
+            }
+            return output;
+        }
+
         public static List<string> LoadFile(this string file)
         {
             if (!File.Exists(file))
@@ -50,7 +68,7 @@ namespace PassBankLibrary.DataAccess.TextHelpers
 
             return File.ReadAllLines(file).ToList();
         }
-        public static List<string> Encrypt(this List<AccountModel> models)
+        public static List<string> EncryptAccount(this List<AccountModel> models)
         {
             List<string> lines = new List<string>();
 
@@ -75,6 +93,35 @@ namespace PassBankLibrary.DataAccess.TextHelpers
                     }
                 }
                 lines.Add($"{p.Id},{p.AccountName},{p.Username},{p.Password}");
+            }
+            return lines;
+        }
+
+        public static List<string> EncryptUsers(this List<UserModel> models)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (UserModel p in models)
+            {
+
+                if (p.Id == models.Count)
+                {
+                    // Encrypt password
+                    byte[] userBytePass = UTF8Encoding.UTF8.GetBytes(p.MasterPassword);
+                    using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+                    {
+
+                        byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                        using (TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                        {
+                            ICryptoTransform transform = tripleDES.CreateEncryptor();
+                            byte[] results = transform.TransformFinalBlock(userBytePass, 0, userBytePass.Length);
+                            p.MasterPassword = Convert.ToBase64String(results, 0, results.Length);
+                        }
+
+                    }
+                }
+                lines.Add($"{p.Id},{p.Name},{p.MasterPassword}");
             }
             return lines;
         }
